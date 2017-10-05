@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.team2399.robot.commands.ExampleCommand;
-import org.team2399.robot.subsystems.ExampleSubsystem;
+import org.team2399.robot.subsystems.QuadMotor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,7 +20,7 @@ import org.team2399.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final QuadMotor exampleSubsystem = new QuadMotor();
 	public static OI oi;
 
 	Command autonomousCommand;
