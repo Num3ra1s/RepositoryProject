@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.team2399.robot.commands.ExampleCommand;
+import org.team2399.robot.commands.AxisInput;
 import org.team2399.robot.subsystems.QuadMotor;
 
 /**
@@ -20,8 +20,9 @@ import org.team2399.robot.subsystems.QuadMotor;
  */
 public class Robot extends IterativeRobot {
 
-	public static final QuadMotor exampleSubsystem = new QuadMotor();
-	public static OI oi;
+	public final QuadMotor quadmotor = new QuadMotor();
+	public OI oi;
+	public AxisInput ai;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -33,9 +34,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		ai = new AxisInput(quadmotor, oi);
 	}
 
 	/**
@@ -96,6 +97,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		ai.start();
 	}
 
 	/**

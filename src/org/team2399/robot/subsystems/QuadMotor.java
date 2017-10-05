@@ -25,4 +25,12 @@ public class QuadMotor extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
+	
+	public void setPercent(double num) {
+		a.set(num);
+		b.set(num);
+		c.set(num);
+		d.set(num);
+	}
+	
 }
